@@ -9,6 +9,9 @@ import {
 } from "react-router-dom";
 import MainLayout from './Layout/MainLayout.jsx';
 import NotFound from './Components/NotFound.jsx';
+import AuthLayout from './Layout/AuthLayout.jsx';
+import Login from './Components/Login.jsx';
+import Register from './Components/Register.jsx';
 
 const router = createBrowserRouter([
   {
@@ -16,6 +19,20 @@ const router = createBrowserRouter([
     element: <MainLayout></MainLayout>,
     errorElement: <NotFound></NotFound>,
   },
+  {
+    path:'/auth',
+    element:<AuthLayout></AuthLayout>,
+    children:[
+      {
+        path:'/auth/login',
+        element:<Login></Login>
+      },
+      {
+        path:'/auth/register',
+        element:<Register></Register>
+      }
+    ]
+  }
 ]);
 
 createRoot(document.getElementById('root')).render(
