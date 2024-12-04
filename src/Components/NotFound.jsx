@@ -1,21 +1,32 @@
+import error from '../assets/Error.jpg'
 import React from "react";
 import { Link } from "react-router-dom";
 
 const NotFound = () => {
   return (
-    <div className="flex flex-col items-center justify-center h-screen bg-gray-100">
-      <h1 className="text-9xl font-bold text-gray-800">404</h1>
-      <p className="text-xl text-gray-600 mt-4">
-        Oops! The page you're looking for doesn't exist.
+    <div className="flex flex-col items-center justify-center min-h-screen bg-gray-100">
+      {/* Image */}
+      <img
+        src={error} // Replace with your desired image URL
+        alt="404 Not Found"
+        className="w-1/2 max-w-md"
+      />
+
+      {/* Title */}
+      <h1 className="text-4xl font-bold text-gray-800 mt-6">Oops! Page Not Found</h1>
+
+      {/* Description */}
+      <p className="text-gray-600 mt-2 text-center max-w-md">
+        The page you're looking for doesn't exist. It might have been removed, or you might have entered the wrong URL.
       </p>
-      <p className="text-gray-500 mt-2">
-        It might have been removed, or the URL is incorrect.
-      </p>
-      <div className="mt-6">
-        <Link to="/">
-          <button className="btn bg-[#4A90E2] text-white">Go Back Home</button>
-        </Link>
-      </div>
+
+      {/* Back to Home Button */}
+      <Link
+        to="/"
+        className="mt-6 bg-cyan-600 text-white px-6 py-2 rounded shadow hover:bg-cyan-700 transition duration-300"
+      >
+        Back to Home
+      </Link>
     </div>
   );
 };

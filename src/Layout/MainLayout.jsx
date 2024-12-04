@@ -1,11 +1,12 @@
 import React from 'react';
 import Navbar from '../Components/Navbar';
 import Banner from '../Components/Banner';
+import Footer from '../Components/Footer';
 const MainLayout = () => {
     return (
         <div>
             <header>
-                <nav>
+                <nav className='sticky top-0 z-50 backdrop-blur-3xl'>
                      <Navbar></Navbar>
                 </nav>
                 <section>
@@ -14,7 +15,9 @@ const MainLayout = () => {
             </header>
 
             <main></main>
-            <footer></footer>
+            <footer>
+                <Footer></Footer>
+            </footer>
         </div>
     );
 };
