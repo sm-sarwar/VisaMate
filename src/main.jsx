@@ -8,11 +8,13 @@ import {
   RouterProvider,
 } from "react-router-dom";
 import MainLayout from './Layout/MainLayout.jsx';
+import NotFound from './Components/NotFound.jsx';
 
 const router = createBrowserRouter([
   {
     path: "/",
     element: <MainLayout></MainLayout>,
+    errorElement: <NotFound></NotFound>,
   },
 ]);
 
