@@ -3,6 +3,8 @@ import Navbar from '../Components/Navbar';
 import Banner from '../Components/Banner';
 import Footer from '../Components/Footer';
 import LatestVisas from '../Components/LatestVisas';
+import HappyClients from '../Components/HappyClients';
+import GuidanceSection from '../Components/GuidanceSection';
 const MainLayout = () => {
     return (
         <div>
@@ -13,11 +15,13 @@ const MainLayout = () => {
                 <section>
                     <Banner></Banner>
                     <LatestVisas></LatestVisas>
+                    <GuidanceSection></GuidanceSection>
                 </section>
             </header>
 
             <main>
                 
+                <HappyClients></HappyClients>
             </main>
             <footer>
                 <Footer></Footer>
