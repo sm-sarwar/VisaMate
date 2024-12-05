@@ -13,12 +13,18 @@ import AuthLayout from './Layout/AuthLayout.jsx';
 import Login from './Components/Login.jsx';
 import Register from './Components/Register.jsx';
 import AuthProvider from './Provider/AuthProvider.jsx';
+import PrivateRoute from './Components/PrivateRoute.jsx';
+import AddVisa from './Pages/AddVisa.jsx';
 
 const router = createBrowserRouter([
   {
     path: "/",
     element: <MainLayout></MainLayout>,
     errorElement: <NotFound></NotFound>,
+  },
+  {
+    path:"/add-visa",
+    element:<PrivateRoute><AddVisa></AddVisa></PrivateRoute>
   },
   {
     path:'/auth',

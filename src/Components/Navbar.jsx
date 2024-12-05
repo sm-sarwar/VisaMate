@@ -51,6 +51,7 @@ const Navbar = () => {
         </div>
 
         <div className="hidden md:flex items-center space-x-4">
+          
           {user ? (
             <>
               <div className="relative group">
@@ -100,7 +101,7 @@ const Navbar = () => {
           </button>
         </div>
       </div>
-      
+
       {isMenuOpen && (
         <div className="md:hidden px-4 pb-4 space-y-2">
           {user ? (
