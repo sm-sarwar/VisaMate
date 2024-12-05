@@ -1,9 +1,21 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import { FcGoogle } from "react-icons/fc";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
+import { AuthContext } from "../Provider/AuthProvider";
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+import Swal from 'sweetalert2'
+
 const Register = () => {
+
+
+    const {createUser,updateUserProfile,signInWithGoogle} = useContext(AuthContext)
     const [show, setShow]= useState(false)
+    const [error, setError] = useState('')
+    const [success, setSuccess] = useState(false)
+    const navigate = useNavigate()
+    
 
     const handleToRegister = (e) => {
         e.preventDefault();
@@ -12,9 +24,59 @@ const Register = () => {
         const email = form.email.value;
         const password = form.password.value;
         const photo = form.photo.value;
-        const user ={name, email, password, photo}
-        console.log(user);
-     } // 
+
+        setError('');
+        setSuccess(false);
+
+        if(password .length < 6){
+          setError('Password must be at least 6 characters long');
+          return;
+        }
+
+        const regex = /^(?=.*[a-z])(?=.*[A-Z]).+$/;
+
+        if(!regex.test(password)){
+          setError( ' Please write at least one uppercase and at least one lowercase')
+          return;
+      }
+
+      createUser(email, password)
+        .then(result=>{
+          console.log(result.user)
+          updateUserProfile({displayName:name, photoURL:photo})
+          .then(()=>{
+            navigate("/")
+          })
+          .catch(error => console.log(error))
+          Swal.fire({
+            title: "Good job!",
+            text: "Registration successful",
+            icon: "success"
+          });
+          setSuccess(true);
+          e.target.reset()
+          navigate('/')
+        })
+       .catch(error=>{
+          console.log('ERROR',error.message)
+          setError(error.message)
+          setSuccess(false);
+        })
+        
+     }
+     
+     
+     
+     const handleSignWithGoogle = () => {
+      signInWithGoogle()
+          .then(result => {
+              toast.success('Google Login Successful!', { position: "top-center" });
+              navigate('/'); 
+          })
+          .catch(error => {
+              toast.error(`Error: ${error.message}`, { position: "top-center" });
+          });
+  }; 
   return (
     <div className="py-10  flex items-center justify-center bg-gray-100">
       <div className="bg-white p-8 rounded-lg shadow-lg w-full max-w-md">
@@ -128,17 +190,21 @@ const Register = () => {
         {/* Google Social Login Button */}
         <div className="mt-6 text-center">
           <button
-            onClick={() => {
-              console.log("Google Login (OAuth) button clicked");
-              // Add your Google login integration here
-            }}
+            onClick={handleSignWithGoogle}
             className="w-full px-4 py-2 bg-white border border-gray-300 rounded-lg shadow-md hover:bg-gray-50 focus:ring-2 focus:ring-cyan-400 focus:outline-none transition-all duration-300 flex justify-center items-center gap-5"
           >
             <span className="text-2xl"><FcGoogle /></span>
             Login with Google
           </button>
         </div>
+        {
+          error && <div className="text-red-500 text-center">{error}</div>
+          }
+          {
+              success && <div className="text-green-500 text-center">SignUp successful. Please check your email for verification.</div> // Display success message if any
+          }        
       </div>
+      <ToastContainer />
     </div>
   );
 };

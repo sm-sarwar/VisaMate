@@ -1,17 +1,63 @@
 import { FcGoogle } from "react-icons/fc";
-import React from "react";
-import { Link } from "react-router-dom";
+import React, { useContext, useRef } from "react";
+import { Link, useNavigate } from "react-router-dom";
+import { auth, AuthContext } from "../Provider/AuthProvider";
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+import { sendPasswordResetEmail } from "firebase/auth";
 
 const Login = () => {
+    const emailRef = useRef()
+    const navigate = useNavigate();
+    const { signInUser,signInWithGoogle } = useContext(AuthContext);
+
+
     const handleToLogin = (e) => {
         e.preventDefault();
         const form = e.target;
         const email = form.email.value;
         const password = form.password.value;
-        const user ={email,password}
-        console.log(user)
-        alert("Login Successful!");
+        
+        signInUser(email, password)
+            .then(result => {
+                toast.success("Login Successful!", { position: "top-center" });
+                e.target.reset();
+                navigate('/'); 
+            })
+            .catch(error => {
+                toast.error(`Error: ${error.message}`, { position: "top-center" });
+            });
     };
+
+
+
+    const handleSignWithGoogle = () => {
+      signInWithGoogle()
+          .then(result => {
+              toast.success('Google Login Successful!', { position: "top-center" });
+              navigate('/'); 
+          })
+          .catch(error => {
+              toast.error(`Error: ${error.message}`, { position: "top-center" });
+          });
+  };
+
+
+
+  const forgetPassword= ()=>{
+    const email = emailRef.current.value
+    if(!email){
+        alert("Please enter valid email"); 
+    }
+    else{
+        sendPasswordResetEmail(auth,email)
+        .then(()=>{
+            alert('Password Reset email sent , please check your email')
+        })
+        .catch()
+    }
+}
+
   return (
     <div className=" py-10 flex items-center justify-center bg-gray-100">
       <div className="bg-white p-8 rounded-lg shadow-lg w-full max-w-md">
@@ -31,6 +77,7 @@ const Login = () => {
             </label>
             <input
               type="email"
+              ref={emailRef}
               id="email"
               name="email"
               required
@@ -58,7 +105,8 @@ const Login = () => {
           {/* Forget Password */}
           <div className="text-right mb-4">
             <a
-              href="/forgot-password"
+              onClick={forgetPassword}
+              href="#"
               className="text-cyan-600 text-sm hover:underline"
             >
               Forgot Password?
@@ -90,18 +138,15 @@ const Login = () => {
         {/* Social Login Button (Google) */}
         <div className="mt-6 text-center">
           <button
-            onClick={() => {
-              console.log("Google Login (OAuth) button clicked");
-              // Add your Google login integration here
-            }}
+            onClick={handleSignWithGoogle}
             className="w-full px-4 py-2 bg-white border border-gray-300 rounded-lg shadow-md hover:bg-gray-50 focus:ring-2 focus:ring-cyan-400 focus:outline-none transition-all duration-300 flex justify-center items-center gap-5"
           >
             <span className="text-2xl"><FcGoogle /></span>
             Login with Google
           </button>
         </div>
-        
       </div>
+      <ToastContainer />
     </div>
   );
 };
