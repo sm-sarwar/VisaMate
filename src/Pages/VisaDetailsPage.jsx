@@ -2,8 +2,14 @@ import React, { useEffect, useState } from 'react';
 import { useLoaderData, useParams } from 'react-router-dom';
 import Navbar from '../Components/Navbar';
 import Footer from '../Components/Footer';
+import ApplyVisaModal from '../Components/ApplyVisaModal';
 
 const VisaDetailsPage = () => {
+    const [isModalOpen, setIsModalOpen] = useState(false);
+
+    const openModal = () => setIsModalOpen(true);
+    const closeModal = () => setIsModalOpen(false);
+
   const { id } = useParams();
  
   const loadedData = useLoaderData()
@@ -70,9 +76,16 @@ const VisaDetailsPage = () => {
             </p>
             
             <div className=" space-x-4">
-              <button className="bg-cyan-600 text-white  w-full py-2 rounded-lg hover:bg-cyan-700 transition">
+              <button 
+              onClick={openModal}
+              className="bg-cyan-600 text-white  w-full py-2 rounded-lg hover:bg-cyan-700 transition">
                 Apply For The Visa
               </button>
+              <ApplyVisaModal
+                isOpen={isModalOpen}
+                onClose={closeModal}
+                visaFee={visa.fee}
+                />
             </div>
           </div>
         </div>
