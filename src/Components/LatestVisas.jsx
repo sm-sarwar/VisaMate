@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from "react";
-import { useLoaderData } from "react-router-dom";
+import { Link, useLoaderData } from "react-router-dom";
 
 const LatestVisas = () => {
   const [visas , setVisas] = useState([])
   useEffect(()=>{
-    fetch("http://localhost:5000/visas")
+    fetch("http://localhost:5000/latest-visas")
     .then(res=>res.json())
     .then(data => setVisas(data))
 },[])
@@ -45,6 +45,15 @@ const LatestVisas = () => {
             </div>
           ))}
         </div>
+      </div>
+      <div className="text-center">
+        <Link to="/all-visas">
+        <button className="mt-4 bg-teal-600
+         text-white px-16 py-2 rounded
+          hover:bg-teal-900 transition duration-300">
+        See all visas
+        </button>
+        </Link>
       </div>
     </section>
   );

@@ -15,6 +15,7 @@ import Register from './Components/Register.jsx';
 import AuthProvider from './Provider/AuthProvider.jsx';
 import PrivateRoute from './Components/PrivateRoute.jsx';
 import AddVisa from './Pages/AddVisa.jsx';
+import AllVisa from './Pages/AllVisa.jsx';
 
 const router = createBrowserRouter([
   {
@@ -26,6 +27,11 @@ const router = createBrowserRouter([
     path:"/add-visa",
     element:<PrivateRoute><AddVisa></AddVisa></PrivateRoute>,
 
+  },
+  {
+    path:"/all-visas",
+    element:<AllVisa></AllVisa>,
+    loader: ()=> fetch('http://localhost:5000/all-visas')
   },
   {
     path:'/auth',
