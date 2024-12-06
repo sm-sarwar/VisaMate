@@ -1,8 +1,9 @@
 import React, { useEffect, useState } from "react";
-import { Link, useLoaderData } from "react-router-dom";
+import { Link, useLoaderData, useNavigate } from "react-router-dom";
 
 const LatestVisas = () => {
   const [visas , setVisas] = useState([])
+  const navigate = useNavigate()
   useEffect(()=>{
     fetch("http://localhost:5000/latest-visas")
     .then(res=>res.json())
@@ -38,7 +39,10 @@ const LatestVisas = () => {
                   Application Method: {visa.applicationMethod}
                 </p>
                 {/* "See Details" Button */}
-                <button className="mt-4 bg-cyan-600 text-white px-4 py-2 rounded hover:bg-cyan-700 transition duration-300">
+                <button 
+                onClick={() => navigate(`/visa-details/${visa._id}`)}
+                className="mt-4 bg-cyan-600 text-white px-4 py-2 
+                rounded hover:bg-cyan-700 transition duration-300">
                   See Details
                 </button>
               </div>

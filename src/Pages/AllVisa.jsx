@@ -1,18 +1,23 @@
-import React, { useEffect} from 'react';
+import React, { useEffect, useState} from 'react';
 import AOS from 'aos';
 import 'aos/dist/aos.css';
-import { useLoaderData, useNavigate } from 'react-router-dom';
+import {  Link, useNavigate } from 'react-router-dom';
 import Footer from '../Components/Footer';
 import Navbar from '../Components/Navbar';
 
 const AllVisas = () => {
-  const visas = useLoaderData()
-  const navigate = useNavigate();
-
-  useEffect(() => {
-    AOS.init();
-
-  }, []);
+    const [visas, setVisas] = useState([]);
+    const navigate = useNavigate();
+  
+    useEffect(() => {
+      // Initialize AOS
+      AOS.init();
+  
+      // Fetch all visas from the API
+      fetch('http://localhost:5000/all-visas')
+        .then((res) => res.json())
+        .then((data) => setVisas(data));
+    }, []);
 
   return (
     <div>
