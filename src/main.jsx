@@ -18,6 +18,7 @@ import AddVisa from './Pages/AddVisa.jsx';
 import AllVisa from './Pages/AllVisa.jsx';
 import VisaDetailsPage from './Pages/VisaDetailsPage.jsx';
 
+
 const router = createBrowserRouter([
   {
     path: "/",

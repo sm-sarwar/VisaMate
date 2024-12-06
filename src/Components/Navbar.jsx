@@ -3,6 +3,7 @@ import React, { useContext, useState } from "react";
 import { Link, NavLink } from "react-router-dom";
 import { FaPassport, FaBars, FaTimes } from "react-icons/fa";
 import { AuthContext } from "../Provider/AuthProvider";
+import ThemeToggle from "./ThemeToggle";
 
 const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -93,6 +94,7 @@ const Navbar = () => {
               </Link>
             </>
           )}
+          <ThemeToggle></ThemeToggle>
     </div>
 
         <div className="md:hidden flex items-center">
@@ -145,6 +147,7 @@ const Navbar = () => {
               </Link>
             </>
           )}
+           <ThemeToggle></ThemeToggle>
           <hr className="border-gray-200" />
           <NavLink to="/" className="block hover:text-gray-300">
             Home
