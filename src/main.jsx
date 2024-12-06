@@ -24,7 +24,8 @@ const router = createBrowserRouter([
   },
   {
     path:"/add-visa",
-    element:<PrivateRoute><AddVisa></AddVisa></PrivateRoute>
+    element:<PrivateRoute><AddVisa></AddVisa></PrivateRoute>,
+
   },
   {
     path:'/auth',

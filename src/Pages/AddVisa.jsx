@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import Navbar from "../Components/Navbar";
 import Footer from "../Components/Footer";
+import Swal from "sweetalert2";
 
 const AddVisa = () => {
   const [formData, setFormData] = useState({
@@ -40,7 +41,35 @@ const AddVisa = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     console.log("Visa Data Submitted:", formData);
-    
+    fetch('http://localhost:5000/visas',{
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(formData)
+    })
+    .then(res => res.json())
+    .then(data =>{
+      console.log(data)
+      Swal.fire({
+        title: "Good job!",
+        text: "Visa added successfully!",
+        icon: "success"
+      });
+    })
+    setFormData({
+      countryImage: "",
+      countryName: "",
+      visaType: "",
+      processingTime: "",
+      requiredDocuments: [],
+      description: "",
+      ageRestriction: "",
+      fee: "",
+      validity: "",
+      applicationMethod: "",
+    });
+
   };
 
   return (
@@ -94,7 +123,7 @@ const AddVisa = () => {
                   name="visaType"
                   value={formData.visaType}
                   onChange={handleInputChange}
-                  className="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500"
+                  className="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-cyan-600 focus:border-cyan-600"
                   required
                 >
                   <option value="">Select Visa Type</option>
