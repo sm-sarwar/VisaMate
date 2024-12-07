@@ -24,6 +24,7 @@ const Register = () => {
         const email = form.email.value;
         const password = form.password.value;
         const photo = form.photo.value;
+        const user = {name, email}
 
         setError('');
         setSuccess(false);
@@ -43,6 +44,17 @@ const Register = () => {
       createUser(email, password)
         .then(result=>{
           console.log(result.user)
+          fetch('http://localhost:5000/loginUser',{
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(user)
+          })
+          .then(res => res.json())
+          .then(data =>{
+            console.log(data)
+          })
           updateUserProfile({displayName:name, photoURL:photo})
           .then(()=>{
             navigate("/")

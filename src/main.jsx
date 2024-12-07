@@ -17,6 +17,8 @@ import PrivateRoute from './Components/PrivateRoute.jsx';
 import AddVisa from './Pages/AddVisa.jsx';
 import AllVisa from './Pages/AllVisa.jsx';
 import VisaDetailsPage from './Pages/VisaDetailsPage.jsx';
+import MyAddedVisa from './Pages/MyAddedVisa.jsx';
+import UpdateVisa from './Components/UpdateVisa.jsx';
 
 
 const router = createBrowserRouter([
@@ -39,6 +41,16 @@ const router = createBrowserRouter([
     element:<PrivateRoute><VisaDetailsPage></VisaDetailsPage></PrivateRoute>,
     loader:()=> fetch('http://localhost:5000/all-visas')
     
+  },
+  {
+    path:"/my-visas",
+    element:<PrivateRoute><MyAddedVisa></MyAddedVisa></PrivateRoute>,
+    loader:()=> fetch('http://localhost:5000/all-visas')
+  },
+  {
+    path:"/updateVisas/:id",
+    element:<UpdateVisa></UpdateVisa>,
+    loader:({params})=> fetch(`http://localhost:5000/all-visas/${params.id}`)
   },
   {
     path:'/auth',
