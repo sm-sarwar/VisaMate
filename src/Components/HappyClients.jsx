@@ -1,4 +1,5 @@
 import React from "react";
+import { Slide } from "react-awesome-reveal"; // Import Slide animation
 
 const HappyClients = () => {
   // Sample client data
@@ -42,30 +43,33 @@ const HappyClients = () => {
         <h2 className="text-3xl font-bold text-center text-gray-700 mb-8">
           Happy Clients Says
         </h2>
+
         {/* Cards Grid */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
-          {clients.map((client, index) => (
-            <div
-              key={index}
-              className="bg-white rounded-lg shadow-lg p-6 flex flex-col items-center"
-            >
-              {/* Client Photo */}
-              <img
-                src={client.photo}
-                alt={`${client.name}'s photo`}
-                className="w-20 h-20 rounded-full mb-4 border-4 border-cyan-500"
-              />
-              {/* Feedback */}
-              <p className="italic text-gray-600 text-center mb-4">
-                "{client.feedback}"
-              </p>
-              {/* Client Name */}
-              <h4 className="text-lg font-semibold text-cyan-600">
-                {client.name}
-              </h4>
-            </div>
-          ))}
-        </div>
+        <Slide direction="up" cascade damping={0.4} triggerOnce>
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
+            {clients.map((client, index) => (
+              <div
+                key={index}
+                className="bg-white rounded-lg shadow-lg p-6 flex flex-col items-center"
+              >
+                {/* Client Photo */}
+                <img
+                  src={client.photo}
+                  alt={`${client.name}'s photo`}
+                  className="w-20 h-20 rounded-full mb-4 border-4 border-cyan-500"
+                />
+                {/* Feedback */}
+                <p className="italic text-gray-600 text-center mb-4">
+                  "{client.feedback}"
+                </p>
+                {/* Client Name */}
+                <h4 className="text-lg font-semibold text-cyan-600">
+                  {client.name}
+                </h4>
+              </div>
+            ))}
+          </div>
+        </Slide>
       </div>
     </div>
   );
