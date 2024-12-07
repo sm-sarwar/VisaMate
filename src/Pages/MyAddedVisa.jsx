@@ -2,9 +2,11 @@ import Navbar from '../Components/Navbar';
 import Footer from '../Components/Footer';
 import { Link, useLoaderData } from 'react-router-dom';
 import Swal from 'sweetalert2';
+import { useState } from 'react';
 
 const MyAddedVisa = () => {
-  const allVisa = useLoaderData();
+  const loadedAllVisa = useLoaderData();
+  const [allVisa, setAllVisa] = useState(loadedAllVisa);
 
     
   const handleDelete = (id) => {
@@ -19,11 +21,22 @@ const MyAddedVisa = () => {
         confirmButtonText: "Yes, delete it!"
       }).then((result) => {
         if (result.isConfirmed) {
-          Swal.fire({
-            title: "Deleted!",
-            text: "Your file has been deleted.",
-            icon: "success"
-          });
+          fetch(`http://localhost:5000/all-visas/${id}`,{
+            method: 'DELETE'
+          })
+          .then (res =>res.json())
+          .then (data =>{
+            console.log(data)
+            if(data.deletedCount > 0){
+                Swal.fire({
+                    title: "Deleted!",
+                    text: "Your Visa has been deleted.",
+                    icon: "success"
+                  });
+                  const remaining = allVisa.filter(visa => visa._id !== id)
+                  setAllVisa(remaining)
+            }
+          })
         }
       });
   };
