@@ -10,7 +10,7 @@ const MyAddedVisa = () => {
 
     
   const handleDelete = (id) => {
-    console.log(id)
+    // console.log(id)
     Swal.fire({
         title: "Are you sure?",
         text: "You won't be able to revert this!",
@@ -21,12 +21,12 @@ const MyAddedVisa = () => {
         confirmButtonText: "Yes, delete it!"
       }).then((result) => {
         if (result.isConfirmed) {
-          fetch(`http://localhost:5000/all-visas/${id}`,{
+          fetch(`https://visa-mate-server.vercel.app/all-visas/${id}`,{
             method: 'DELETE'
           })
           .then (res =>res.json())
           .then (data =>{
-            console.log(data)
+            // console.log(data)
             if(data.deletedCount > 0){
                 Swal.fire({
                     title: "Deleted!",

@@ -6,10 +6,10 @@ import Footer from '../Components/Footer';
 import Navbar from '../Components/Navbar';
 
 const AllVisas = () => {
-  const [visas, setVisas] = useState([]); // All visas
-  const [filteredVisas, setFilteredVisas] = useState([]); // Filtered visas
-  const [visaTypes, setVisaTypes] = useState([]); // Unique visa types
-  const [selectedVisaType, setSelectedVisaType] = useState('All'); // Selected visa type
+  const [visas, setVisas] = useState([]); 
+  const [filteredVisas, setFilteredVisas] = useState([]); 
+  const [visaTypes, setVisaTypes] = useState([]);
+  const [selectedVisaType, setSelectedVisaType] = useState('All'); 
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -17,7 +17,7 @@ const AllVisas = () => {
     AOS.init();
 
     // Fetch all visas from the API
-    fetch('http://localhost:5000/all-visas')
+    fetch('https://visa-mate-server.vercel.app/all-visas')
       .then((res) => res.json())
       .then((data) => {
         setVisas(data);

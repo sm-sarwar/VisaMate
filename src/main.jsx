@@ -40,23 +40,23 @@ const router = createBrowserRouter([
   {
     path:"/visa-details/:id",
     element:<PrivateRoute><VisaDetailsPage></VisaDetailsPage></PrivateRoute>,
-    loader:()=> fetch('http://localhost:5000/all-visas')
+    loader:()=> fetch('https://visa-mate-server.vercel.app/all-visas')
     
   },
   {
     path:"/my-visas",
     element:<PrivateRoute><MyAddedVisa></MyAddedVisa></PrivateRoute>,
-    loader:()=> fetch('http://localhost:5000/all-visas')
+    loader:()=> fetch('https://visa-mate-server.vercel.app/all-visas')
   },
   {
     path:"/updateVisas/:id",
     element:<UpdateVisa></UpdateVisa>,
-    loader:({params})=> fetch(`http://localhost:5000/all-visas/${params.id}`)
+    loader:({params})=> fetch(`https://visa-mate-server.vercel.app/all-visas/${params.id}`)
   },
   {
     path:'/my-applications',
     element:<PrivateRoute><MyApplicationVisa></MyApplicationVisa></PrivateRoute>,
-    loader:()=> fetch('http://localhost:5000/users')
+    loader:()=> fetch('https://visa-mate-server.vercel.app/users')
   },
   {
     path:'/auth',

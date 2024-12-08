@@ -43,7 +43,7 @@ const UpdateVisa = () => {
       const handleSubmit = (e) => {
         e.preventDefault();
         console.log(formData)
-        fetch(`http://localhost:5000/all-visas/${updateVisa._id}`,{
+        fetch(`https://visa-mate-server.vercel.app/all-visas/${updateVisa._id}`,{
             method: 'PUT',
             headers: {
               'Content-Type': 'application/json'
@@ -52,7 +52,7 @@ const UpdateVisa = () => {
           })
           .then(res => res.json())
           .then(data =>{
-            console.log(data)
+            // console.log(data)
             Swal.fire({
               title: "Good job!",
               text: "Update successfully!",
@@ -60,12 +60,7 @@ const UpdateVisa = () => {
             });
             navigate("/my-visas")
           })
-        // Swal.fire({
-        //     title: "Good job!",
-        //     text: "Visa Update Successfully",
-        //     icon: "success"
-        //   });
-        //   navigate("/my-visas")
+
       };
     return (
         <div className=" bg-gray-50 flex items-center justify-center py-12 px-4 sm:px-6 lg:px-8">

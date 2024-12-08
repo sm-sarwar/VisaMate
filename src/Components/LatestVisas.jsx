@@ -5,7 +5,7 @@ const LatestVisas = () => {
   const [visas , setVisas] = useState([])
   const navigate = useNavigate()
   useEffect(()=>{
-    fetch("http://localhost:5000/latest-visas")
+    fetch("https://visa-mate-server.vercel.app/latest-visas")
     .then(res=>res.json())
     .then(data => setVisas(data))
 },[])

@@ -20,7 +20,7 @@ const ApplyVisaModal = ({ isOpen, onClose, visaFee }) => {
     e.preventDefault();
     // console.log('Form Data Submitted:', formData);
     // You can add your API call here to submit the data.
-    fetch('http://localhost:5000/users',{
+    fetch('https://visa-mate-server.vercel.app/users',{
         method:'POST',
         headers: {
             'Content-Type': 'application/json'

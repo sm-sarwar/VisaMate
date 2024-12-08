@@ -44,7 +44,7 @@ const Register = () => {
       createUser(email, password)
         .then(result=>{
           console.log(result.user)
-          fetch('http://localhost:5000/loginUser',{
+          fetch('https://visa-mate-server.vercel.app/loginUser',{
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
@@ -59,7 +59,7 @@ const Register = () => {
           .then(()=>{
             navigate("/")
           })
-          .catch(error => console.log(error))
+          // .catch(error => console.log(error))
           Swal.fire({
             title: "Good job!",
             text: "Registration successful",
@@ -70,7 +70,7 @@ const Register = () => {
           navigate('/')
         })
        .catch(error=>{
-          console.log('ERROR',error.message)
+          // console.log('ERROR',error.message)
           setError(error.message)
           setSuccess(false);
         })

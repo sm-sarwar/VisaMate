@@ -41,7 +41,7 @@ const AddVisa = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     console.log("Visa Data Submitted:", formData);
-    fetch('http://localhost:5000/visas',{
+    fetch('https://visa-mate-server.vercel.app/visas',{
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'
@@ -50,7 +50,7 @@ const AddVisa = () => {
     })
     .then(res => res.json())
     .then(data =>{
-      console.log(data)
+      // console.log(data)
       Swal.fire({
         title: "Good job!",
         text: "Visa added successfully!",

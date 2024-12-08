@@ -15,7 +15,7 @@ const VisaDetailsPage = () => {
   const loadedData = useLoaderData()
 
   const visa= loadedData.find(visa => visa._id === id)
-    console.log(visa)
+    // console.log(visa)
 
   return (
     <div>
