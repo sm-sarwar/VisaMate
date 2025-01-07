@@ -5,6 +5,7 @@ import Footer from '../Components/Footer';
 import LatestVisas from '../Components/LatestVisas';
 import HappyClients from '../Components/HappyClients';
 import GuidanceSection from '../Components/GuidanceSection';
+import VisaProcess from '../Components/VisaProcess';
 const MainLayout = () => {
     return (
         <div>
@@ -16,6 +17,7 @@ const MainLayout = () => {
                     <Banner></Banner>
                     <LatestVisas></LatestVisas>
                     <GuidanceSection></GuidanceSection>
+                    <VisaProcess></VisaProcess>
                 </section>
             </header>
 

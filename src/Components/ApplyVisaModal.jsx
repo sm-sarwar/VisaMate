@@ -1,9 +1,11 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import Swal from 'sweetalert2';
+import { AuthContext } from '../Provider/AuthProvider';
 
 const ApplyVisaModal = ({ isOpen, onClose, visaFee }) => {
+  const {user} = useContext(AuthContext)
   const [formData, setFormData] = useState({
-    email: '',
+    email: user.email,
     firstName: '',
     lastName: '',
     appliedDate: new Date().toISOString().split('T')[0], 
@@ -66,6 +68,7 @@ const ApplyVisaModal = ({ isOpen, onClose, visaFee }) => {
               name="email"
               onChange={handleChange}
               value={formData.email}
+              readOnly
               className="w-full mt-1 p-2 border border-gray-300 rounded-md bg-gray-100"
             />
           </div>

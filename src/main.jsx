@@ -20,6 +20,8 @@ import VisaDetailsPage from './Pages/VisaDetailsPage.jsx';
 import MyAddedVisa from './Pages/MyAddedVisa.jsx';
 import UpdateVisa from './Components/UpdateVisa.jsx';
 import MyApplicationVisa from './Pages/MyApplicationVisa.jsx';
+import AboutUs from './Pages/AboutUs.jsx';
+import SupportPage from './Pages/Support.jsx';
 
 
 const router = createBrowserRouter([
@@ -52,6 +54,14 @@ const router = createBrowserRouter([
     path:"/updateVisas/:id",
     element:<UpdateVisa></UpdateVisa>,
     loader:({params})=> fetch(`https://visa-mate-server.vercel.app/all-visas/${params.id}`)
+  },
+  {
+    path:"/aboutUs",
+    element:<AboutUs></AboutUs>
+  },
+  {
+    path:"/support",
+    element:<SupportPage></SupportPage>
   },
   {
     path:'/my-applications',

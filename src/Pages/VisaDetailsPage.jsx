@@ -3,7 +3,7 @@ import { useLoaderData, useParams } from 'react-router-dom';
 import Navbar from '../Components/Navbar';
 import Footer from '../Components/Footer';
 import ApplyVisaModal from '../Components/ApplyVisaModal';
-
+import 'animate.css';
 const VisaDetailsPage = () => {
     const [isModalOpen, setIsModalOpen] = useState(false);
 
@@ -16,7 +16,7 @@ const VisaDetailsPage = () => {
 
   const visa= loadedData.find(visa => visa._id === id)
     // console.log(visa)
-
+  
   return (
     <div>
         <nav className='sticky z-50 top-0'>
@@ -24,7 +24,7 @@ const VisaDetailsPage = () => {
         </nav>
         <main className='my-5'>
         <div className="max-w-screen-lg mx-auto p-6 bg-white rounded-lg shadow-lg flex flex-col md:flex-row items-start">
-          <div className="w-full md:w-1/2 p-4">
+          <div className="w-full md:w-1/2 p-4 ">
             <img
               src={visa.countryImage}
               alt={visa.countryName}

@@ -1,6 +1,7 @@
-import error from '../assets/Error.jpg'
+
 import React from "react";
 import { Link } from "react-router-dom";
+import error from '../assets/404.png'
 
 const NotFound = () => {
   return (
@@ -13,13 +14,7 @@ const NotFound = () => {
       />
 
       {/* Title */}
-      <h1 className="text-4xl font-bold text-gray-800 mt-6">Oops! Page Not Found</h1>
-
-      {/* Description */}
-      <p className="text-gray-600 mt-2 text-center max-w-md">
-        The page you're looking for doesn't exist. It might have been removed, or you might have entered the wrong URL.
-      </p>
-
+    
       {/* Back to Home Button */}
       <Link
         to="/"
