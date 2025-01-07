@@ -1,5 +1,5 @@
 import React from "react";
-import { FaFacebook, FaTwitter, FaInstagram, FaLinkedin } from "react-icons/fa";
+import { FaFacebook, FaTwitter, FaInstagram, FaLinkedin, FaPassport } from "react-icons/fa";
 
 
 const Footer = () => {
@@ -9,7 +9,8 @@ const Footer = () => {
         <div className="flex flex-col md:flex-row justify-between items-center">
           {/* Website Name and Copyright */}
           <div className="mb-4 md:mb-0 text-center md:text-left">
-            <h2 className="text-xl font-bold">VisaMate</h2>
+             
+            <h2 className="text-xl font-bold flex"> <FaPassport className="text-2xl mr-2" /> VisaMate</h2>
             <p className="text-sm mt-2">
               © {new Date().getFullYear()} VisaMate. All rights reserved.
             </p>

@@ -19,7 +19,9 @@ const SupportPage = () => {
 
   return (
     <div className="bg-gray-50 text-gray-800">
-      <Navbar />
+     <nav className='sticky top-0 z-50 '>
+            <Navbar></Navbar>
+        </nav>
 
       {/* Header Section */}
       <header className="text-center p-8 bg-base-200 ">
