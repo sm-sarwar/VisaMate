@@ -1,8 +1,10 @@
 import React, { useContext, useState } from 'react';
 import Swal from 'sweetalert2';
 import { AuthContext } from '../Provider/AuthProvider';
+import { useNavigate } from 'react-router-dom';
 
-const ApplyVisaModal = ({ isOpen, onClose, visaFee }) => {
+const ApplyVisaModal = ({ isOpen, onClose, visaFee, visaId }) => {
+  const navigate = useNavigate()
   const {user} = useContext(AuthContext)
   const [formData, setFormData] = useState({
     email: user.email,
@@ -12,12 +14,17 @@ const ApplyVisaModal = ({ isOpen, onClose, visaFee }) => {
     fee: visaFee,
   });
 
-
+  const visaApplication = {
+    visaId,
+    ...formData
+  }
+  // Form Handlers
   const handleChange = (e) => {
     const { name, value,} = e.target;
     setFormData({ ...formData, [name]: value });
   };
-
+   
+  console.log(visaApplication)
   const handleSubmit = (e) => {
     e.preventDefault();
     // console.log('Form Data Submitted:', formData);
@@ -27,7 +34,7 @@ const ApplyVisaModal = ({ isOpen, onClose, visaFee }) => {
         headers: {
             'Content-Type': 'application/json'
           },
-          body: JSON.stringify(formData)
+          body: JSON.stringify(visaApplication)
     })
     .then(res => res.json())
     .then(data => console.log(data))
@@ -36,6 +43,7 @@ const ApplyVisaModal = ({ isOpen, onClose, visaFee }) => {
         text: "Application successfully!",
         icon: "success"
       });
+      navigate("/my-applications")
     onClose(); 
   };
 

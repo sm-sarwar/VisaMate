@@ -85,6 +85,7 @@ const VisaDetailsPage = () => {
                 isOpen={isModalOpen}
                 onClose={closeModal}
                 visaFee={visa.fee}
+                visaId= {visa._id}
                 />
             </div>
           </div>

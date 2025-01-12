@@ -65,7 +65,7 @@ const router = createBrowserRouter([
   {
     path:'/my-applications',
     element:<PrivateRoute><MyApplicationVisa></MyApplicationVisa></PrivateRoute>,
-    loader:()=> fetch('https://visa-mate-server.vercel.app/users')
+    
   },
   {
     path:'/auth',

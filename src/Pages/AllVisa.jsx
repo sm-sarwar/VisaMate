@@ -1,4 +1,3 @@
-
 import React, { useEffect, useState } from "react";
 import AOS from "aos";
 import "aos/dist/aos.css";
@@ -11,6 +10,7 @@ const AllVisas = () => {
   const [filteredVisas, setFilteredVisas] = useState([]);
   const [visaTypes, setVisaTypes] = useState(["All"]);
   const [selectedVisaType, setSelectedVisaType] = useState("All");
+  const [searchTerm, setSearchTerm] = useState("");
   const navigate = useNavigate();
 
   // Fetch visas and initialize AOS
@@ -28,14 +28,19 @@ const AllVisas = () => {
       });
   }, []);
 
-  // Filter visas based on selected type
   useEffect(() => {
+    const filtered = selectedVisaType === "All"
+      ? visas
+      : visas.filter((visa) => visa.visaType === selectedVisaType);
+  
+    // Further filter by search term
     setFilteredVisas(
-      selectedVisaType === "All"
-        ? visas
-        : visas.filter((visa) => visa.visaType === selectedVisaType)
+      filtered.filter((visa) =>
+        visa.countryName.toLowerCase().includes(searchTerm.toLowerCase())
+      )
     );
-  }, [selectedVisaType, visas]);
+  }, [selectedVisaType, visas, searchTerm]);
+  
 
   const handleToSort = () => {
     const sorted = [...filteredVisas].sort((a, b) => a.fee - b.fee);
@@ -51,10 +56,10 @@ const AllVisas = () => {
         <h1 className="text-4xl font-bold text-cyan-600 text-center mb-8">
           All Visas
         </h1>
-        <div className="flex justify-between items-center mb-5 rounded-lg">
+        <div className="grid grid-cols-1 md:grid-cols-4 gap-5 mb-5 rounded-lg">
           {/* Dropdown for Filtering */}
           <select
-            className="border border-gray-300 rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-cyan-500"
+            className="border col-span-1 border-gray-300 rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-cyan-500"
             value={selectedVisaType}
             onChange={(e) => setSelectedVisaType(e.target.value)}
             data-aos="fade-right"
@@ -66,10 +71,20 @@ const AllVisas = () => {
             ))}
           </select>
 
+          {/* searching  */}
+
+          <input
+            type="text"
+            className="border col-span-2 border-gray-300 rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-cyan-500"
+            placeholder="Search by country name"
+            value={searchTerm}
+            onChange={(e) => setSearchTerm(e.target.value)}
+          />
+
           {/* Button for Sorting */}
           <button
             onClick={handleToSort}
-            className="py-2 px-4 bg-cyan-600 text-white rounded-lg transition transform duration-300 hover:scale-105"
+            className="py-2 col-span-1 px-4 bg-cyan-600 text-white rounded-lg transition transform duration-300 hover:scale-105"
             data-aos="fade-left"
           >
             Sort By Visa Fee
@@ -112,4 +127,3 @@ const AllVisas = () => {
 };
 
 export default AllVisas;
-
