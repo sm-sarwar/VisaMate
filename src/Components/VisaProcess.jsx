@@ -27,30 +27,56 @@ const VisaProcess = () => {
         </h2>
       </div>
       <div className="grid grid-cols-1 md:grid-cols-3 gap-5 max-w-screen-xl mx-auto">
-        <div data-aos="fade-right">
-          <StepCard
-            step="STEP 01"
-            title="Complete Online Registrations"
-            description="These cases are perfectly simple and easy to distinguish."
-            Icon={FaRegClipboard}
-            className="text-center"
-          />
+        {/* From Uiverse.io by Uncannypotato69  */}
+        <div className="div  bg-white m-auto rounded-[1em] overflow-hidden relative group p-10 z-0">
+          <div className="circle absolute h-28 w-28 -top-[2.5em] -right-[2.5em] rounded-full bg-cyan-500 group-hover:scale-[800%] duration-500 z-[-1] op"></div>
+          <button className="text-[0.8em] absolute bottom-[1em] left-[1em] text-[#6C3082] group-hover:text-[white] duration-500">
+            <i className="fa-solid fa-arrow-right"></i>
+          </button>
+
+          <div className="z-20  group-hover:text-white duration-500 ">
+            <div className="text-center space-y-2">
+              <p className="text-lg uppercase font-semibold">Step 1</p>
+              <h2 className="text-xl font-bold">
+                Complete Online Registrations
+              </h2>
+              <p className="text-lg opacity-80">
+                These cases are perfectly simple and easy to distinguish.
+              </p>
+            </div>
+          </div>
         </div>
-        <div data-aos="fade-up">
-          <StepCard
-            step="STEP 02"
-            title="Documents and Payments"
-            description="These cases are perfectly simple and easy to distinguish."
-            Icon={FaFileAlt}
-          />
+        <div className="div  bg-white m-auto rounded-[1em] overflow-hidden relative group p-10 z-0">
+          <div className="circle absolute h-28 w-28 -top-[2.5em] -right-[2.5em] rounded-full bg-cyan-500 group-hover:scale-[800%] duration-500 z-[-1] op"></div>
+          <button className="text-[0.8em] absolute bottom-[1em] left-[1em] text-[#6C3082] group-hover:text-[white] duration-500">
+            <i className="fa-solid fa-arrow-right"></i>
+          </button>
+
+          <div className="z-20  group-hover:text-white duration-500 ">
+            <div className="text-center space-y-2">
+              <p className="text-lg uppercase font-semibold">Step 2</p>
+              <h2 className="text-xl font-bold">Document And Payment</h2>
+              <p className="text-lg opacity-80">
+                These cases are perfectly simple and easy to distinguish.
+              </p>
+            </div>
+          </div>
         </div>
-        <div data-aos="fade-left">
-          <StepCard
-            step="STEP 03"
-            title="Receive your Visa Now"
-            description="These cases are perfectly simple and easy to distinguish."
-            Icon={FaRegSmileBeam}
-          />
+        <div className="div  bg-white m-auto rounded-[1em] overflow-hidden relative group p-10 z-0">
+          <div className="circle absolute h-28 w-28 -top-[2.5em] -right-[2.5em] rounded-full bg-cyan-500 group-hover:scale-[800%] duration-500 z-[-1] op"></div>
+          <button className="text-[0.8em] absolute bottom-[1em] left-[1em] text-[#6C3082] group-hover:text-[white] duration-500">
+            <i className="fa-solid fa-arrow-right"></i>
+          </button>
+
+          <div className="z-20  group-hover:text-white duration-500 ">
+            <div className="text-center space-y-2">
+              <p className="text-lg uppercase font-semibold">Step 3</p>
+              <h2 className="text-xl font-bold">Receive your Visa Now</h2>
+              <p className="text-lg opacity-80">
+                These cases are perfectly simple and easy to distinguish.
+              </p>
+            </div>
+          </div>
         </div>
       </div>
     </div>

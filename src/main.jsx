@@ -48,7 +48,6 @@ const router = createBrowserRouter([
   {
     path:"/my-visas",
     element:<PrivateRoute><MyAddedVisa></MyAddedVisa></PrivateRoute>,
-    loader:()=> fetch('https://visa-mate-server.vercel.app/all-visas')
   },
   {
     path:"/updateVisas/:id",

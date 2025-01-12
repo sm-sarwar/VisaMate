@@ -95,7 +95,7 @@ const AllVisas = () => {
               <p className="text-gray-600">Fee: ${visa.fee}</p>
               <p className="text-gray-600">Validity: {visa.validity}</p>
               <button
-                className="mt-4 bg-cyan-600 text-white py-2 px-4 rounded hover:bg-cyan-700 transition duration-300 hover:scale-105 shadow-xl"
+                className="mt-4 bg-cyan-600 text-white py-2 px-4 button transition duration-300 hover:scale-105 shadow-xl"
                 onClick={() => navigate(`/visa-details/${visa._id}`)}
               >
                 See Details

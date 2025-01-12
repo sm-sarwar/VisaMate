@@ -1,9 +1,13 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import Navbar from "../Components/Navbar";
 import Footer from "../Components/Footer";
 import Swal from "sweetalert2";
+import { AuthContext } from "../Provider/AuthProvider";
+import { useNavigate } from "react-router-dom";
 
 const AddVisa = () => {
+  const {user} = useContext(AuthContext)
+  const navigate = useNavigate()
   const [formData, setFormData] = useState({
     countryImage: "",
     countryName: "",
@@ -17,6 +21,10 @@ const AddVisa = () => {
     applicationMethod: "",
   });
 
+  const userInfo ={
+    ...formData,
+    email: user?.email
+  }
   const handleInputChange = (e) => {
     const { name, value } = e.target;
     setFormData((prevState) => ({
@@ -40,13 +48,13 @@ const AddVisa = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log("Visa Data Submitted:", formData);
+    console.log("Visa Data Submitted:", userInfo);
     fetch('https://visa-mate-server.vercel.app/visas',{
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'
       },
-      body: JSON.stringify(formData)
+      body: JSON.stringify(userInfo)
     })
     .then(res => res.json())
     .then(data =>{
@@ -56,6 +64,7 @@ const AddVisa = () => {
         text: "Visa added successfully!",
         icon: "success"
       });
+      navigate("/my-visas");
     })
     setFormData({
       countryImage: "",

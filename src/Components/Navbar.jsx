@@ -43,7 +43,6 @@ const Navbar = () => {
           <NavLink to="/support" className="hover:text-gray-300">
             Support
           </NavLink>
-
           {user && (
             <>
               <NavLink to="/my-applications" className="hover:text-gray-300">

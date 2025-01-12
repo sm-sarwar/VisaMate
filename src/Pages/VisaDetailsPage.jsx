@@ -23,12 +23,12 @@ const VisaDetailsPage = () => {
             <Navbar></Navbar>
         </nav>
         <main className='my-5'>
-        <div className="max-w-screen-lg mx-auto p-6 bg-white rounded-lg shadow-lg flex flex-col md:flex-row items-start">
+        <div className="max-w-screen-lg mx-auto p-6 bg-white rounded-lg shadow-lg overflow-hidden flex flex-col md:flex-row items-start group">
           <div className="w-full md:w-1/2 p-4 ">
             <img
               src={visa.countryImage}
               alt={visa.countryName}
-              className="w-full h-auto rounded-md shadow-md"
+              className="w-full h-auto transition transform duration-700 group-hover:scale-110 rounded-md shadow-md "
             />
           </div>
 
@@ -78,7 +78,7 @@ const VisaDetailsPage = () => {
             <div className=" space-x-4">
               <button 
               onClick={openModal}
-              className="bg-cyan-600 text-white  w-full py-2 rounded-lg hover:bg-cyan-700 transition">
+              className="btnn w-full text-cyan-600 text-lg bg-gray-50 backdrop-blur-md lg:font-semibold isolation-auto border-gray-50 before:absolute before:w-full before:transition-all before:duration-700 before:hover:w-full before:-left-full before:hover:left-0 before:rounded-full before:bg-cyan-500 hover:text-gray-50 before:-z-10 before:aspect-square before:hover:scale-150 before:hover:duration-700 relative z-10  overflow-hidden border-2 rounded-lg group py-2 px-6  hover:bg-cyan-600 transition duration-300 ">
                 Apply For The Visa
               </button>
               <ApplyVisaModal

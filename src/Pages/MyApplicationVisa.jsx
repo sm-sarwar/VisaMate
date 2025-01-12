@@ -82,6 +82,7 @@ const MyApplicationVisa = () => {
             <footer>
                 <Footer></Footer>
             </footer>
+            
         </div>
     );
 };

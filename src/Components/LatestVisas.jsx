@@ -1,4 +1,3 @@
-
 import React, { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import AOS from "aos";
@@ -25,11 +24,11 @@ const LatestVisas = () => {
         <h2 className="font-bold text-center mb-8 text-4xl text-[#1f6981]">
           Latest Visas
         </h2>
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 ">
           {visas.map((visa, index) => (
             <div
               key={index}
-              className="bg-white shadow-md rounded-lg overflow-hidden group hover:shadow-2xl hover:scale-105 transition-all duration-300 ease-in-out "
+              className=" bg-white shadow-md rounded-lg overflow-hidden group transition transform  duration-500 ease-in-out "
               data-aos={index % 2 === 0 ? "fade-up" : "fade-down"} // Alternate AOS effects
               data-aos-delay={index * 100} // Add delay for a cascading effect
             >
@@ -56,8 +55,7 @@ const LatestVisas = () => {
                 {/* "See Details" Button */}
                 <button
                   onClick={() => navigate(`/visa-details/${visa._id}`)}
-                  className="mt-4 bg-cyan-600 text-white px-4 py-2 
-                  rounded hover:bg-cyan-700 transition duration-300 hover:scale-105 shadow-xl "
+                  className="mt-4 button transition transform duration-700 hover:-translate-y-2 "
                 >
                   See Details
                 </button>
@@ -66,14 +64,25 @@ const LatestVisas = () => {
           ))}
         </div>
       </div>
-      <div className="text-center">
+      {/* see all visa button  */}
+      <div className="text-center  flex flex-col items-center justify-center">
         <Link to="/all-visas">
-          <button
-            className="mt-4 bg-teal-600
-         text-white px-16 py-2 rounded
-          hover:bg-teal-900 transition duration-300"
-          >
+          <button className="mt-4 cssbuttons-io-button ">
             See all visas
+            <div className="icon">
+              <svg
+                height="24"
+                width="24"
+                viewBox="0 0 24 24"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path d="M0 0h24v24H0z" fill="none"></path>
+                <path
+                  d="M16.172 11l-5.364-5.364 1.414-1.414L20 12l-7.778 7.778-1.414-1.414L16.172 13H4v-2z"
+                  fill="currentColor"
+                ></path>
+              </svg>
+            </div>
           </button>
         </Link>
       </div>

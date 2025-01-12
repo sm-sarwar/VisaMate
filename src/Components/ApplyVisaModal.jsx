@@ -127,7 +127,7 @@ const ApplyVisaModal = ({ isOpen, onClose, visaFee }) => {
           <div className="mt-6">
             <button
               type="submit"
-              className="w-full bg-cyan-600 text-white py-2 px-4 rounded-lg hover:bg-cyan-700 transition"
+              className="btnn w-full text-cyan-600 text-lg bg-gray-50 backdrop-blur-md lg:font-semibold isolation-auto border-gray-50 before:absolute before:w-full before:transition-all before:duration-700 before:hover:w-full before:-left-full before:hover:left-0 before:rounded-full before:bg-cyan-500 hover:text-gray-50 before:-z-10 before:aspect-square before:hover:scale-150 before:hover:duration-700 relative z-10  overflow-hidden border-2 rounded-lg group py-2 px-6  hover:bg-cyan-600 transition duration-300"
             >
               Apply
             </button>
